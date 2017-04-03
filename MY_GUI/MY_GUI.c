@@ -11,7 +11,7 @@
 
 u8 input[5]={0,0,0,0,0};
 u8 length=0;
-u8 EX_number[5];
+u8 EX_number[5];					//实验编号
 u8 card_status=0;
 
 
@@ -38,7 +38,7 @@ void GUI_qidong(void)
 
 
 
-void GUI_qidong1(void)                  //启动过程中的指纹验证界面
+void verification(void)                  //启动过程中的指纹验证界面
 {
 	POINT_COLOR=BLACK; 
 	
@@ -236,11 +236,12 @@ u8 TOUCH_shiyanbianhao(void)
 }
 
 
-void TOUCH_DISP_shiyanbianhao(void)  //实验编号键值处理
+void TOUCH_DISP_shiyanbianhao(void)                                               //实验编号键值处理
 {
 	u8 key;
 	u8 num=0;
 	u8 ii=0;
+	u8 end=1;
 	
 	length=0;
 	input[0]=0;input[1]=0;input[2]=0;input[3]=0;input[4]=0;
@@ -249,7 +250,7 @@ void TOUCH_DISP_shiyanbianhao(void)  //实验编号键值处理
 
 
 
-	while(1)
+	while(end)
 	{
 		GUI_shiyanbianhao();
 		key=TOUCH_shiyanbianhao();	 //获取触摸键值y
@@ -263,11 +264,11 @@ void TOUCH_DISP_shiyanbianhao(void)  //实验编号键值处理
 								break;
 
 			case 2:		EX_number[0]=input[0];								 //把实验编号放入EX_number[5]中
-						EX_number[1]=input[1];
-						EX_number[2]=input[2];
-						EX_number[3]=input[3];
-						EX_number[4]=input[4];
-						
+								EX_number[1]=input[1];
+								EX_number[2]=input[2];
+								EX_number[3]=input[3];
+								EX_number[4]=input[4];
+								end=0;
 								break;
 
 			case 3:		if(ii>=4)	break;    //输入数值不超过4位数  //输入0
@@ -466,7 +467,7 @@ u8 TOUCH_MENU(void)
 }
 
 
-void TOUCH_DISP_MENU(void)
+void TOUCH_DISP_MENU(void)				//主循环程序
 {
 	u8 key;
 	u8 t=0;	
@@ -567,14 +568,12 @@ void TOUCH_DISP_MENU(void)
 			default:	break;
 		}
 		
-
 		delay_ms(10);//每过10ms查询一次触摸屏
 
-
-	}
-
-
+	 }
 }
+
+
 
 
 
@@ -953,11 +952,11 @@ void TOUCH_DISP_GradeInput_1(void)  //实验编号键值处理
 								break;
 
 			case 2:		EX_number[0]=input[0];								 //把实验编号放入EX_number[5]中
-						EX_number[1]=input[1];
-						EX_number[2]=input[2];
-						EX_number[3]=input[3];
-						EX_number[4]=input[4];
-						
+								EX_number[1]=input[1];
+								EX_number[2]=input[2];
+								EX_number[3]=input[3];
+								EX_number[4]=input[4];
+								
 								break;
 
 			case 3:		if(ii>=4)	break;    //输入数值不超过4位数  //输入0

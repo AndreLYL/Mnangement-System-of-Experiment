@@ -254,18 +254,16 @@ int main(void)
 //		mmm=LCD_ReadPoint(200,200);
 //		LCD_Fill(155,50,205,70,mmm);
 
-//	 GUI_qidong();
-//	TOUCH_DISP_shiyanbianhao();
-	
+		GUI_qidong();
+		TOUCH_DISP_shiyanbianhao();
+		LCD_Clear(0xC7FF);
+		while(1);
+		{
+			TOUCH_DISP_MENU();
+		}	
 
-    while(1)
-	{
 
-		TOUCH_DISP_MENU();
-	}	
-		
-		
-	}
+		}
 		res=0;  
 											  
 	myfree(picfileinfo.lfname);	//ÊÍ·ÅÄÚ´æ			    

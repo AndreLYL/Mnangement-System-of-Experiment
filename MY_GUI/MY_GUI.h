@@ -6,7 +6,7 @@
 
 
 void GUI_qidong(void);
-void GUI_qidong1(void);
+void verification(void);
 void GUI_shiyanbianhao(void);
 void GUI_MENU(void);
 void GUI_PersonInformation(void);
