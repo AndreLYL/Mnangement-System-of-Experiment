@@ -56,7 +56,7 @@ I (D:\Software\Keil5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (D:\Software\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
 I (D:\Software\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
 I (..\SYSTEM\sys\system_stm32f10x.h)(0x4F1E2E3C)
-F (..\SYSTEM\usart\usart.c)(0x532C1350)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\OLED -I ..\HARDWARE\LCD -I ..\USMART -I ..\HARDWARE\RTC -I ..\HARDWARE\WKUP -I ..\HARDWARE\ADC -I ..\HARDWARE\DAC -I ..\HARDWARE\DMA -I ..\HARDWARE\24CXX -I ..\HARDWARE\SPI -I ..\HARDWARE\FLASH -I ..\HARDWARE\TOUCH -I ..\HARDWARE\REMOTE -I ..\HARDWARE\DS18B20 -I ..\HARDWARE\NRF24L01 -I ..\HARDWARE\PS2 -I ..\HARDWARE\STMFLASH -I ..\MALLOC -I ..\HARDWARE\SD -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\MY_GUI -I ..\RFID-RC522-ID:\Software\Keil5\ARM\RV31\INC-ID:\Software\Keil5\ARM\CMSIS\Include-ID:\Software\Keil5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="523" -DSTM32F10X_HD-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
+F (..\SYSTEM\usart\usart.c)(0x58EB4340)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\OLED -I ..\HARDWARE\LCD -I ..\USMART -I ..\HARDWARE\RTC -I ..\HARDWARE\WKUP -I ..\HARDWARE\ADC -I ..\HARDWARE\DAC -I ..\HARDWARE\DMA -I ..\HARDWARE\24CXX -I ..\HARDWARE\SPI -I ..\HARDWARE\FLASH -I ..\HARDWARE\TOUCH -I ..\HARDWARE\REMOTE -I ..\HARDWARE\DS18B20 -I ..\HARDWARE\NRF24L01 -I ..\HARDWARE\PS2 -I ..\HARDWARE\STMFLASH -I ..\MALLOC -I ..\HARDWARE\SD -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\MY_GUI -I ..\RFID-RC522-ID:\Software\Keil5\ARM\RV31\INC-ID:\Software\Keil5\ARM\CMSIS\Include-ID:\Software\Keil5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="523" -DSTM32F10X_HD-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
 I (..\SYSTEM\usart\usart.h)(0x5323CAD6)
 I (..\SYSTEM\sys\sys.h)(0x52C02CEB)
 I (..\SYSTEM\sys\stm32f10x.h)(0x4F1E2E3C)
@@ -525,3 +525,14 @@ I (..\RFID-RC522\rc522_add.h)(0x5355E20F)
 I (D:\Software\Keil5\ARM\ARMCC\include\string.h)(0x57F606B8)
 I (D:\Software\Keil5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
 I (..\HARDWARE\LED\led.h)(0x5528CF78)
+F (..\MY_APP\usart2.c)(0x58EB40B4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\OLED -I ..\HARDWARE\LCD -I ..\USMART -I ..\HARDWARE\RTC -I ..\HARDWARE\WKUP -I ..\HARDWARE\ADC -I ..\HARDWARE\DAC -I ..\HARDWARE\DMA -I ..\HARDWARE\24CXX -I ..\HARDWARE\SPI -I ..\HARDWARE\FLASH -I ..\HARDWARE\TOUCH -I ..\HARDWARE\REMOTE -I ..\HARDWARE\DS18B20 -I ..\HARDWARE\NRF24L01 -I ..\HARDWARE\PS2 -I ..\HARDWARE\STMFLASH -I ..\MALLOC -I ..\HARDWARE\SD -I ..\FATFS\exfuns -I ..\FATFS\src -I ..\TEXT -I ..\PICTURE -I ..\MY_GUI -I ..\RFID-RC522-ID:\Software\Keil5\ARM\RV31\INC-ID:\Software\Keil5\ARM\CMSIS\Include-ID:\Software\Keil5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="523" -DSTM32F10X_HD-o ..\obj\usart2.o --omf_browse ..\obj\usart2.crf --depend ..\obj\usart2.d)
+I (..\MY_APP\usart2.h)(0x58EB40E9)
+I (..\SYSTEM\sys\sys.h)(0x52C02CEB)
+I (..\SYSTEM\sys\stm32f10x.h)(0x4F1E2E3C)
+I (D:\Software\Keil5\ARM\CMSIS\Include\core_cm3.h)(0x53463974)
+I (D:\Software\Keil5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (D:\Software\Keil5\ARM\CMSIS\Include\core_cmInstr.h)(0x53463974)
+I (D:\Software\Keil5\ARM\CMSIS\Include\core_cmFunc.h)(0x53463974)
+I (..\SYSTEM\sys\system_stm32f10x.h)(0x4F1E2E3C)
+I (D:\Software\Keil5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
+F (..\MY_APP\usart2.h)(0x58EB40E9)()

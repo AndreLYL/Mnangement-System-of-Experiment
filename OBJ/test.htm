@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\test.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\test.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Mon Apr 03 17:07:23 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Mon Apr 10 16:27:01 2017
 <BR><P>
 <H3>Maximum Stack Usage =        608 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -117,7 +117,7 @@ Function Pointers
  <LI><a href="#[b]">ai_load_picfile</a> from piclib.o(i.ai_load_picfile) referenced 2 times from usmart_config.o(.data)
  <LI><a href="#[8]">delay_ms</a> from delay.o(i.delay_ms) referenced 2 times from usmart_config.o(.data)
  <LI><a href="#[9]">delay_us</a> from delay.o(i.delay_us) referenced 2 times from usmart_config.o(.data)
- <LI><a href="#[59]">fputc</a> from usart.o(i.fputc) referenced from _printf_char_file.o(.text)
+ <LI><a href="#[59]">fputc</a> from usart2.o(i.fputc) referenced from _printf_char_file.o(.text)
  <LI><a href="#[5d]">jpeg_in_func</a> from tjpgd.o(i.jpeg_in_func) referenced from tjpgd.o(i.jpg_decode)
  <LI><a href="#[5f]">jpeg_out_func_fill</a> from tjpgd.o(i.jpeg_out_func_fill) referenced from tjpgd.o(i.jpg_decode)
  <LI><a href="#[5e]">jpeg_out_func_point</a> from tjpgd.o(i.jpeg_out_func_point) referenced from tjpgd.o(i.jpg_decode)
@@ -940,8 +940,8 @@ Global Symbols
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GT9147_Send_Cfg
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GT9147_RD_Reg
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CT_IIC_Init
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TP_Init
 </UL>
@@ -1641,7 +1641,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[e4]"></a>SPI1_ReadWriteByte</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, spi.o(i.SPI1_ReadWriteByte))
-<BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_ReadID
+<BR><BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_Page
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_ReadSR
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_ReadID
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Read
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Erase_Sector
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Write_Enable
@@ -1649,8 +1651,6 @@ Global Symbols
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SendBlock
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_SPI_ReadWriteByte
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_RecvData
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_Page
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_ReadSR
 </UL>
 
 <P><STRONG><a name="[e6]"></a>SPI1_SetSpeed</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, spi.o(i.SPI1_SetSpeed))
@@ -1664,16 +1664,16 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWriteByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Erase_Sector
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_Page
+<BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_Page
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Erase_Sector
 </UL>
 
 <P><STRONG><a name="[ec]"></a>SPI_Flash_Erase_Sector</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, flash.o(i.SPI_Flash_Erase_Sector))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SPI_Flash_Erase_Sector &rArr; SPI_Flash_Wait_Busy &rArr; SPI_Flash_ReadSR
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Write_Enable
+<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Wait_Busy
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Write_Enable
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWriteByte
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Wait_Busy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
 </UL>
@@ -1694,8 +1694,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWriteByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;font_init
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
+<BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
+<LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;font_init
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_convert
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_HzMat
@@ -1722,18 +1722,18 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_ReadSR
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Erase_Sector
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_Page
+<BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_Page
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Erase_Sector
 </UL>
 
 <P><STRONG><a name="[f1]"></a>SPI_Flash_Write</STRONG> (Thumb, 196 bytes, Stack size 40 bytes, flash.o(i.SPI_Flash_Write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = SPI_Flash_Write &rArr; SPI_Flash_Write_NoCheck &rArr; SPI_Flash_Write_Page &rArr; SPI_Flash_Wait_Busy &rArr; SPI_Flash_ReadSR
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Read
+<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_NoCheck
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Read
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Erase_Sector
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mymalloc
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;myfree
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_NoCheck
 </UL>
 <BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
 </UL>
@@ -1749,9 +1749,9 @@ Global Symbols
 <P><STRONG><a name="[f5]"></a>SPI_Flash_Write_Page</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, flash.o(i.SPI_Flash_Write_Page))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = SPI_Flash_Write_Page &rArr; SPI_Flash_Wait_Busy &rArr; SPI_Flash_ReadSR
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Write_Enable
+<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Wait_Busy
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_FLASH_Write_Enable
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWriteByte
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Wait_Busy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write_NoCheck
 </UL>
@@ -1969,7 +1969,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__printf
 </UL>
 
-<P><STRONG><a name="[7c]"></a>_sys_exit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, usart.o(i._sys_exit))
+<P><STRONG><a name="[7c]"></a>_sys_exit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, usart2.o(i._sys_exit))
 <BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
@@ -2108,8 +2108,8 @@ Global Symbols
 <P><STRONG><a name="[137]"></a>disk_write</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, diskio.o(i.disk_write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = disk_write &rArr; SPI_Flash_Write &rArr; SPI_Flash_Write_NoCheck &rArr; SPI_Flash_Write_Page &rArr; SPI_Flash_Wait_Busy &rArr; SPI_Flash_ReadSR
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteDisk
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_WriteDisk
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
@@ -2302,7 +2302,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[59]"></a>fputc</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usart.o(i.fputc))
+<P><STRONG><a name="[59]"></a>fputc</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usart2.o(i.fputc))
 <BR>[Address Reference Count : 1]<UL><LI> _printf_char_file.o(.text)
 </UL>
 <P><STRONG><a name="[11d]"></a>get_fat</STRONG> (Thumb, 232 bytes, Stack size 24 bytes, ff.o(i.get_fat))
@@ -2608,9 +2608,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mf_scan_files
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memfree
 <LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jpeg_freeall
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gif_decode
@@ -2622,11 +2622,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exfuns_init
+<BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
+<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exfuns_init
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pic_get_tnum
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mf_scan_files
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Flash_Write
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memalloc
 <LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jpeg_mallocall
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gif_decode

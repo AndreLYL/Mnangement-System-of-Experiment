@@ -655,6 +655,21 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>MY_App</GroupName>
+          <Files>
+            <File>
+              <FileName>usart2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MY_APP\usart2.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MY_APP\usart2.h</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

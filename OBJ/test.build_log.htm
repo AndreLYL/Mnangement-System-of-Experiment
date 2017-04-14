@@ -27,12 +27,23 @@ Project File Date:  04/03/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'D:\Software\Keil5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling MY_GUI.c...
-linking...
-Program Size: Code=66710 RO-data=9462 RW-data=800 ZI-data=47720  
-FromELF: creating hex file...
-"..\OBJ\test.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:01
+compiling usart.c...
+..\SYSTEM\usart\usart.c(120): warning:  #223-D: function "strlen" declared implicitly
+  	lenth=strlen((*p));
+..\SYSTEM\usart\usart.c(133): error:  #20: identifier "stu" is undefined
+  	stu[number].studentID=StuID;
+..\SYSTEM\usart\usart.c(133): error:  #20: identifier "number" is undefined
+  	stu[number].studentID=StuID;
+..\SYSTEM\usart\usart.c(147): error:  #20: identifier "stu" is undefined
+  		printf("%d\r\n",stu[i].studentID);
+..\SYSTEM\usart\usart.c(152): warning:  #223-D: function "delay_us" declared implicitly
+  		delay_us(10);
+..\SYSTEM\usart\usart.c(155): error:  #20: identifier "number" is undefined
+  	if((i==(number+1))&&(flag==1)) return 1;
+..\SYSTEM\usart\usart.c: 2 warnings, 4 errors
+"..\OBJ\test.axf" - 4 Error(s), 2 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

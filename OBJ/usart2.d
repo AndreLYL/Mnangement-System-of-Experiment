@@ -1,0 +1,10 @@
+..\obj\usart2.o: ..\MY_APP\usart2.c
+..\obj\usart2.o: ..\MY_APP\usart2.h
+..\obj\usart2.o: ..\SYSTEM\sys\sys.h
+..\obj\usart2.o: ..\SYSTEM\sys\stm32f10x.h
+..\obj\usart2.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cm3.h
+..\obj\usart2.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\usart2.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cmInstr.h
+..\obj\usart2.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cmFunc.h
+..\obj\usart2.o: ..\SYSTEM\sys\system_stm32f10x.h
+..\obj\usart2.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
