@@ -2,10 +2,8 @@
 ..\obj\my_gui.o: ..\MY_GUI\my_gui.h
 ..\obj\my_gui.o: ..\SYSTEM\sys\sys.h
 ..\obj\my_gui.o: ..\SYSTEM\sys\stm32f10x.h
-..\obj\my_gui.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cm3.h
+..\obj\my_gui.o: ..\SYSTEM\sys\core_cm3.h
 ..\obj\my_gui.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
-..\obj\my_gui.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\my_gui.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cmFunc.h
 ..\obj\my_gui.o: ..\SYSTEM\sys\system_stm32f10x.h
 ..\obj\my_gui.o: ..\HARDWARE\LCD\lcd.h
 ..\obj\my_gui.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
@@ -14,6 +12,7 @@
 ..\obj\my_gui.o: ..\HARDWARE\TOUCH\touch.h
 ..\obj\my_gui.o: ..\HARDWARE\TOUCH\ott2001a.h
 ..\obj\my_gui.o: ..\HARDWARE\TOUCH\gt9147.h
+..\obj\my_gui.o: ..\HARDWARE\TOUCH\ft5206.h
 ..\obj\my_gui.o: ..\SYSTEM\delay\delay.h
 ..\obj\my_gui.o: ..\HARDWARE\DS18B20\ds18b20.h
 ..\obj\my_gui.o: ..\HARDWARE\RTC\rtc.h

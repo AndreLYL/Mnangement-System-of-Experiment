@@ -19,44 +19,10 @@ u8 card_status=0;
 
 
 
-void GUI_qidong(void)
-{
-  POINT_COLOR=BLACK; 
-	Show_Str(90,60,240,16,"欢迎使用",16,1);		//x,y,字符串，字体大小，显示类型 0：非叠加方式，1：叠加方式
-	delay_ms(500);
-	Show_Str(50,80,240,16,"实验室成绩录入系统",16,1);
-	delay_ms(500);
-	Show_Str(120,100,240,16,"开发者：",16,1);
-	Show_Str(120,120,240,16,"巴拉巴拉小魔仙",16,1);
-	delay_ms(500);
-	Show_Str(60,180,240,16,"请您进行指纹验证",16,1);
-	delay_ms(1000);
-	delay_ms(1000);
-	delay_ms(1000);	
-	LCD_Clear(0xC7FF);//清屏
-}
 
 
 
-void verification(void)                  //启动过程中的指纹验证界面
-{
-	POINT_COLOR=BLACK; 
-	
-	if(1)		//指纹验证的标识符
-	{
-		Show_Str(50,80,240,16,"验证成功",16,1);
-		Show_Str(50,80,240,16,"正在启动请稍后。。。",16,1);
-		delay_ms(100);
-		
-	
-	}
-	else
-	{
-		Show_Str(50,80,240,16,"指纹验证失败",16,1);
-		Show_Str(50,80,240,16,"请重新验证",16,1);
-	}
-	LCD_Clear(WHITE);
-}
+
 
 
 void GUI_shiyanbianhao(void)
@@ -406,9 +372,9 @@ void GUI_MENU(void)         //主菜单
 	Show_Str(39+5-15,75,240,16,"成绩录入",16,0);
 	Show_Str(39+120+5-15,75,240,16,"成绩修改",16,0);
 	Show_Str(39+5-15,75+90,240,16,"成绩提交",16,0);
-	Show_Str(39+30+120-40,75+90,240,16,"后台管理",16,0);
+	Show_Str(39+30+120-40,75+90,240,16,"权限管理",16,0);
 	
-	POINT_COLOR=RED; 
+	POINT_COLOR=BLACK; 
 	Show_Str(5+10,39+70+70+40+11,240,16,"今天的温度",16,1);
 	Show_Str(5+10+120,39+70+70+40+11,240,16,"日期和时间",16,1);
 	
@@ -552,7 +518,7 @@ void TOUCH_DISP_MENU(void)				//主循环程序
 			case 0:		GUI_MENU();  				 //没有触摸按键按下，一直显示操作界面
 								break;
 
-			case 1:		//TOUCH_GUI_DISP_administrator(); 	  //管理员验证
+			case 1:		GUI_GradeInput_0(); 	  //成绩录入
 								break;
 
 			case 2:		//TOUCH_GUI_DISP_xiaofei(); 		   		//消费
@@ -724,8 +690,9 @@ void Input_complish(void)
 
 void GUI_GradeInput_0(void)
 {
-	Show_Str(92,152,240,16,"请刷卡",16,1);
-	Show_Str(92,152,240,16,"触摸任一点返回主菜单",16,1);
+	LCD_Clear(0xC7FF);//清屏
+	Show_Str(85,120,240,16,"请刷卡",16,1);
+	Show_Str(35,150,240,16,"触摸任一点返回主菜单",16,1);
 	while(1)
 	{
 		tp_dev.scan(0); 		 
@@ -742,7 +709,9 @@ void GUI_GradeInput_0(void)
 		}else delay_ms(10);	
 		if(flag_com==1)
 		{
-			
+			Read_cardID();
+			LCD_Clear(0xC7FF);//清屏
+			GUI_GradeInput_1();
 		}
 	}
 	

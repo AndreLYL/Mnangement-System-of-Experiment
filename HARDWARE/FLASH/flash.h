@@ -7,8 +7,8 @@
 //W25Q64 驱动函数	   
 //正点原子@ALIENTEK
 //技术论坛:www.openedv.com
-//修改日期:2014/3/14 
-//版本：V1.1
+//修改日期:2014/4/1 
+//版本：V1.2
 //版权所有，盗版必究。
 //Copyright(C) 正点原子 2009-2019
 //All rights reserved
@@ -16,8 +16,10 @@
 //********************************************************************************
 //V1.1 20140314
 //修改SPI_Flash_Write,以支持动态内存管理部分							  
+//V1.2 20140401
+//为兼容PA2，PA3用作串口2的使用，新增：SPI_USART_IO_SET函数以实现分时复用PA2/PA3						  
 ////////////////////////////////////////////////////////////////////////////////// 	  
-
+ 
 //W25X系列/Q系列芯片列表	   
 //W25Q80 ID  0XEF13
 //W25Q16 ID  0XEF14
@@ -65,6 +67,8 @@ void SPI_Flash_Erase_Sector(u32 Dst_Addr);//扇区擦除
 void SPI_Flash_Wait_Busy(void);           //等待空闲
 void SPI_Flash_PowerDown(void);           //进入掉电模式
 void SPI_Flash_WAKEUP(void);			  //唤醒
+
+void SPI_USART_IO_SET(u8 mode);
 #endif
 
 

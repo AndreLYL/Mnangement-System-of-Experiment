@@ -7,15 +7,18 @@
 //正点原子@ALIENTEK
 //技术论坛:www.openedv.com
 //修改日期:2014/3/9
-//版本：V1.0
+//版本：V1.1
 //版权所有，盗版必究。
 //Copyright(C) 广州市星翼电子科技有限公司 2009-2019
 //All rights reserved									  
+//********************************************************************************
+//V1.1 20140309
+//在Adc_Init函数增加了内部温度测量的初始化参数。							
 ////////////////////////////////////////////////////////////////////////////////// 
 	   
 //初始化ADC
 //这里我们仅以规则通道为例
-//我们默认仅开启通道1																	   
+//我们默认仅开启通道1，并开启内部温度传感器了。
 void  Adc_Init(void)
 {    
 	//先初始化IO口
@@ -37,11 +40,17 @@ void  Adc_Init(void)
 	ADC1->CR2|=7<<17;	   //软件控制转换  
 	ADC1->CR2|=1<<20;      //使用用外部触发(SWSTART)!!!	必须使用一个事件来触发
 	ADC1->CR2&=~(1<<11);   //右对齐	 
+	ADC1->CR2|=1<<23;      //使能温度传感器
+
 	ADC1->SQR1&=~(0XF<<20);
 	ADC1->SQR1|=0<<20;     //1个转换在规则序列中 也就是只转换规则序列1 			   
 	//设置通道1的采样时间
 	ADC1->SMPR2&=~(7<<3);  //通道1采样时间清空	  
  	ADC1->SMPR2|=7<<3;     //通道1  239.5周期,提高采样时间可以提高精确度	 
+
+ 	ADC1->SMPR1&=~(7<<18);  //清除通道16原来的设置	 
+	ADC1->SMPR1|=7<<18;     //通道16  239.5周期,提高采样时间可以提高精确度	 
+
 	ADC1->CR2|=1<<0;	   //开启AD转换器	 
 	ADC1->CR2|=1<<3;       //使能复位校准  
 	while(ADC1->CR2&1<<3); //等待校准结束 			 
@@ -71,38 +80,15 @@ u16 Get_Adc_Average(u8 ch,u8 times)
 {
 	u32 temp_val=0;
 	u8 t;
-	u32 max=0,min=4096;
-	u32 tempx[50];
 	for(t=0;t<times;t++)
 	{
-		tempx[t]=Get_Adc(ch);
-		delay_ms(1);
+		temp_val+=Get_Adc(ch);
+		delay_ms(5);
 	}
-	for(t=0;t<times;t++)
-	{
-		if(tempx[t]<min)
-		{
-			min=tempx[t];
-		}
-		if(tempx[t]>max)
-		{
-			max=tempx[t];
-		}
-	}
-	for(t=0;t<times;t++)
-	{
-	  temp_val=temp_val+tempx[t];
-	}
-	temp_val=temp_val-max;
-	temp_val=temp_val-min;
-	times=times-2;
 	return temp_val/times;
 } 
 	 
 
-	 
-
-	 
 
 
 
