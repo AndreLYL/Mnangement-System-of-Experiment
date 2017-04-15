@@ -28,3 +28,5 @@
 ..\obj\as608_add.o: ..\HARDWARE\USART2\usart2.h
 ..\obj\as608_add.o: ..\HARDWARE\AS608\AS608.h
 ..\obj\as608_add.o: ..\HARDWARE\TIMER\timer.h
+..\obj\as608_add.o: ..\HARDWARE\AS608\AS608_add.h
+..\obj\as608_add.o: ..\MY_GUI\my_gui.h

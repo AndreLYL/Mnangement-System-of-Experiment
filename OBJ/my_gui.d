@@ -5,6 +5,9 @@
 ..\obj\my_gui.o: ..\SYSTEM\sys\core_cm3.h
 ..\obj\my_gui.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\my_gui.o: ..\SYSTEM\sys\system_stm32f10x.h
+..\obj\my_gui.o: ..\HARDWARE\AS608\AS608_add.h
+..\obj\my_gui.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\my_gui.o: ..\HARDWARE\AS608\AS608.h
 ..\obj\my_gui.o: ..\HARDWARE\LCD\lcd.h
 ..\obj\my_gui.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\my_gui.o: ..\TEXT\text.h
@@ -28,3 +31,4 @@
 ..\obj\my_gui.o: ..\PICTURE\tjpgd.h
 ..\obj\my_gui.o: ..\PICTURE\integer.h
 ..\obj\my_gui.o: ..\PICTURE\gif.h
+..\obj\my_gui.o: ..\SYSTEM\usart\usart.h

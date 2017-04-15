@@ -29,3 +29,5 @@
 ..\obj\main.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\main.o: ..\HARDWARE\AS608\AS608_add.h
 ..\obj\main.o: ..\MY_GUI\my_gui.h
+..\obj\main.o: ..\RFID-RC522\rc522_add.h
+..\obj\main.o: ..\RFID-RC522\rc522.h
