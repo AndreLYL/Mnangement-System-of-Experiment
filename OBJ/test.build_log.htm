@@ -21,17 +21,22 @@ Target DLL:      Segger\JL2CM3.dll V2.99.23.0
 Dialog DLL:      TCM.DLL V1.27.0.0
  
 <h2>Project:</h2>
-C:\Users\Administrator\Desktop\（寄存器版本，适合Mini开发板）扩展实验14 ATK-AS608指纹识别模块测试实验\（寄存器版本，适合Mini开发板）扩展实验14 ATK-AS608指纹识别模块测试实验\USER\as608.uvprojx
-Project File Date:  04/14/2017
+C:\Users\Administrator\Desktop\实验室管理系统\Mnangement-System-of-Experiment\USER\as608.uvprojx
+Project File Date:  04/15/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'D:\Software\Keil5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling MY_GUI.c...
+compiling main.c...
+main.c(53): warning:  #223-D: function "DS18B20_Init" declared implicitly
+  	DS18B20_Init();	      //DS18B20初始化	
+main.c(54): warning:  #223-D: function "RTC_Init" declared implicitly
+  	RTC_Init();
+main.c: 2 warnings, 0 errors
 linking...
 Program Size: Code=52442 RO-data=7306 RW-data=916 ZI-data=47012  
 FromELF: creating hex file...
-"..\OBJ\test.axf" - 0 Error(s), 0 Warning(s).
+"..\OBJ\test.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_Target_1
