@@ -17,21 +17,7 @@
 #include "AS608_add.h"
 #include "my_gui.h"
 
-/*************************************
-*硬件连接说明：
-*RCC522 <----->MINISTM32
-*
-*1--SDA <----->PB0
-*2--SCK <----->PB13
-*3--MOSI<----->PB15
-*4--MISO<----->PB14
-*5--悬空
-*6--GND <----->GND
-*7--RST <----->PB1
-*8--3.3V<----->3.3V
-*
-*DS18B20与MINISTM32开发板的PA0要连接上
-**************************************/
+
 
 
 #define usart2_baund  57600//串口2波特率，根据指纹模块波特率更改
@@ -59,8 +45,8 @@ int main(void)
 	uart_init(72,115200); //串口1初始化，用于支持USMART  	  
 	LCD_Init();						//初始化液晶 
 	KEY_Init();						//按键初始化	  	
-//	DS18B20_Init();	      //DS18B20初始化	
-//	RTC_Init();
+	DS18B20_Init();	      //DS18B20初始化	
+	RTC_Init();
 	usmart_dev.init(72);	//usmart初始化	
  	usart2_init(36,usart2_baund);	//初始化串口2,用于与指纹模块通讯
 	PS_StaGPIO_Init();	  //初始化FR读状态引脚	

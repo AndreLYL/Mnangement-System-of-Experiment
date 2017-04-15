@@ -20,6 +20,6 @@ void Show_CardID(u8 x,u8 y);
 void Show_Information(void);
 void GUI_GradeInput_1(void);
 void GUI_GradeInput_0(void);
-
+void TOUCH_DISP_GradeInput_1(void);
 
 #endif

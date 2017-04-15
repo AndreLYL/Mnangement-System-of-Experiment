@@ -711,7 +711,7 @@ void GUI_GradeInput_0(void)
 		{
 			Read_cardID();
 			LCD_Clear(0xC7FF);//«Â∆¡
-			GUI_GradeInput_1();
+			TOUCH_DISP_GradeInput_1();
 		}
 	}
 	
