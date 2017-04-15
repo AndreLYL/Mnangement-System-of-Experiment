@@ -87,6 +87,7 @@ DRESULT disk_read (
 	switch(pdrv)
 	{
 		case SD_CARD://SD卡
+			SPI_USART_IO_SET(0);
 			res=SD_ReadDisk(buff,sector,count);	 
 		 	if(res)//STM32 SPI的bug,在sd卡操作失败的时候如果不执行下面的语句,可能导致SPI读写异常
 			{
@@ -94,6 +95,7 @@ DRESULT disk_read (
 				SD_SPI_ReadWriteByte(0xff);//提供额外的8个时钟
 				SD_SPI_SpeedHigh();
 			}
+			SPI_USART_IO_SET(1);
 			break;
 		case EX_FLASH://外部flash
 			for(;count>0;count--)
@@ -130,7 +132,9 @@ DRESULT disk_write (
 	switch(pdrv)
 	{
 		case SD_CARD://SD卡
+			SPI_USART_IO_SET(0);
 			res=SD_WriteDisk((u8*)buff,sector,count);
+			SPI_USART_IO_SET(1);
 			break;
 		case EX_FLASH://外部flash
 			for(;count>0;count--)
@@ -169,8 +173,10 @@ DRESULT disk_ioctl (
 	    {
 		    case CTRL_SYNC:
 				SD_CS=0;
+				SPI_USART_IO_SET(0);
 		        if(SD_WaitReady()==0)res = RES_OK; 
-		        else res = RES_ERROR;	  
+		        else res = RES_ERROR;	
+				SPI_USART_IO_SET(1);  
 				SD_CS=1;
 		        break;	 
 		    case GET_SECTOR_SIZE:

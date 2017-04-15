@@ -1111,7 +1111,7 @@ DWORD clmt_clust (	/* <2:Error, >=2:Cluster number */
 /* Directory handling - Set directory index                              */
 /*-----------------------------------------------------------------------*/
 
-//static,去掉STATIC,以便其他地方调用
+static
 FRESULT dir_sdi (
 	DIR* dp,		/* Pointer to directory object */
 	UINT idx		/* Index of directory table */

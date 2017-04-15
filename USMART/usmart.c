@@ -203,16 +203,16 @@ u8 usmart_sys_cmd_exe(u8 *str)
 //usmart_reset_runtime,清除函数运行时间,连同定时器的计数寄存器以及标志位一起清零.并设置重装载值为最大,以最大限度的延长计时时间.
 //usmart_get_runtime,获取函数运行时间,通过读取CNT值获取,由于usmart是通过中断调用的函数,所以定时器中断不再有效,此时最大限度
 //只能统计2次CNT的值,也就是清零后+溢出一次,当溢出超过2次,没法处理,所以最大延时,控制在:2*计数器CNT*0.1ms.对STM32来说,是:13.1s左右
-//其他的:TIM4_IRQHandler和Timer4_Init,需要根据MCU特点自行修改.确保计数器计数频率为:10Khz即可.另外,定时器不要开启自动重装载功能!!
+//其他的:TIM2_IRQHandler和Timer4_Init,需要根据MCU特点自行修改.确保计数器计数频率为:10Khz即可.另外,定时器不要开启自动重装载功能!!
 
 #if USMART_ENTIMX_SCAN==1
 //复位runtime
 //需要根据所移植到的MCU的定时器参数进行修改
 void usmart_reset_runtime(void)
 {
-	TIM4->SR&=~(1<<0);	//清除中断标志位 
-	TIM4->ARR=0XFFFF;	//将重装载值设置到最大
-	TIM4->CNT=0;		//清空定时器的CNT
+	TIM2->SR&=~(1<<0);	//清除中断标志位 
+	TIM2->ARR=0XFFFF;	//将重装载值设置到最大
+	TIM2->CNT=0;		//清空定时器的CNT
 	usmart_dev.runtime=0;	
 }
 //获得runtime时间
@@ -220,34 +220,34 @@ void usmart_reset_runtime(void)
 //需要根据所移植到的MCU的定时器参数进行修改
 u32 usmart_get_runtime(void)
 {
-	if(TIM4->SR&0X0001)//在运行期间,产生了定时器溢出
+	if(TIM2->SR&0X0001)//在运行期间,产生了定时器溢出
 	{
 		usmart_dev.runtime+=0XFFFF;
 	}
-	usmart_dev.runtime+=TIM4->CNT;
+	usmart_dev.runtime+=TIM2->CNT;
 	return usmart_dev.runtime;		//返回计数值
 }
 //下面这两个函数,非USMART函数,放到这里,仅仅方便移植. 
-//定时器4中断服务程序	 
-void TIM4_IRQHandler(void)
+//定时器2中断服务程序	 
+void TIM2_IRQHandler(void)
 { 		    		  			    
-	if(TIM4->SR&0X0001)//溢出中断
+	if(TIM2->SR&0X0001)//溢出中断
 	{ 
 		usmart_dev.scan();	//执行usmart扫描	
-		TIM4->CNT=0;		//清空定时器的CNT
-		TIM4->ARR=1000;		//恢复原来的设置
+		TIM2->CNT=0;		//清空定时器的CNT
+		TIM2->ARR=1000;		//恢复原来的设置
 	}				   
-	TIM4->SR&=~(1<<0);//清除中断标志位 	    
+	TIM2->SR&=~(1<<0);//清除中断标志位 	    
 }
-//使能定时器4,使能中断.
-void Timer4_Init(u16 arr,u16 psc)
+//使能定时器2,使能中断.
+void Timer2_Init(u16 arr,u16 psc)
 {
-	RCC->APB1ENR|=1<<2;	//TIM4时钟使能    
- 	TIM4->ARR=arr;  	//设定计数器自动重装值  
-	TIM4->PSC=psc;  	//预分频器7200,得到10Khz的计数时钟	
-	TIM4->DIER|=1<<0;   //允许更新中断			  							    
-	TIM4->CR1|=0x01;    //使能定时器2
-  	MY_NVIC_Init(3,3,TIM4_IRQn,2);//抢占3，子优先级3，组2(组2中优先级最低的)									 
+	RCC->APB1ENR|=1<<0;	//TIM2时钟使能    
+ 	TIM2->ARR=arr;  	//设定计数器自动重装值  
+	TIM2->PSC=psc;  	//预分频器7200,得到10Khz的计数时钟	
+	TIM2->DIER|=1<<0;   //允许更新中断			  							    
+	TIM2->CR1|=0x01;    //使能定时器2
+  	MY_NVIC_Init(3,3,TIM2_IRQn,2);//抢占3，子优先级3，组2(组2中优先级最低的)									 
 }
 #endif
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -256,7 +256,7 @@ void Timer4_Init(u16 arr,u16 psc)
 void usmart_init(u8 sysclk)
 {
 #if USMART_ENTIMX_SCAN==1
-	Timer4_Init(1000,(u32)sysclk*100-1);//分频,时钟为10K ,100ms中断一次,注意,计数频率必须为10Khz,以和runtime单位(0.1ms)同步.
+	Timer2_Init(1000,(u32)sysclk*100-1);//分频,时钟为10K ,100ms中断一次,注意,计数频率必须为10Khz,以和runtime单位(0.1ms)同步.
 #endif
 	usmart_dev.sptype=1;	//十六进制显示参数
 }		

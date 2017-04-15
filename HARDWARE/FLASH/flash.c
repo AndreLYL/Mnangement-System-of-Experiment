@@ -8,8 +8,8 @@
 //W25Q64 驱动函数	   
 //正点原子@ALIENTEK
 //技术论坛:www.openedv.com
-//修改日期:2014/3/14 
-//版本：V1.1
+//修改日期:2014/4/1 
+//版本：V1.2
 //版权所有，盗版必究。
 //Copyright(C) 正点原子 2009-2019
 //All rights reserved
@@ -17,10 +17,33 @@
 //********************************************************************************
 //V1.1 20140314
 //修改SPI_Flash_Write,以支持动态内存管理部分							  
+//V1.2 20140401
+//为兼容PA2，PA3用作串口2的使用，新增：SPI_USART_IO_SET函数以实现分时复用PA2/PA3						  
 ////////////////////////////////////////////////////////////////////////////////// 	  
  
 u16 SPI_FLASH_TYPE=W25Q64;//默认就是25Q64
 
+
+//PA2和PA3 IO口方向设置函数
+//因为USART2也用到PA2，PA3，和SPI FLASH/SD卡的CS有冲突，故需要设置方向
+//mode：0,SPI FLASH/SD卡工作
+//      1,USART2工作
+void SPI_USART_IO_SET(u8 mode)
+{  
+	if(mode)//设置为USART 工作模式
+	{
+		USART1->CR1|=1<<13;//使能USART1
+		GPIOA->CRL&=0XFFFF00FF; 
+		GPIOA->CRL|=0X00008B00;//PA2.3 复用输出+上拉输入 
+		GPIOA->ODR|=3<<2;		
+	}else
+	{ 
+		USART1->CR1&=~(1<<13);//失能USART1
+		GPIOA->CRL&=0XFFFF00FF; 
+		GPIOA->CRL|=0X00003300;//PA2.3 推挽输出 
+		GPIOA->ODR|=3<<2;		
+	}
+}
 //4Kbytes为一个Sector
 //16个扇区为1个Block
 //W25Q64
@@ -102,6 +125,7 @@ u16 SPI_Flash_ReadID(void)
 void SPI_Flash_Read(u8* pBuffer,u32 ReadAddr,u16 NumByteToRead)   
 { 
  	u16 i;    												    
+	SPI_USART_IO_SET(0);//SPI 工作
 	SPI_FLASH_CS=0;                            //使能器件   
     SPI1_ReadWriteByte(W25X_ReadData);         //发送读取命令   
     SPI1_ReadWriteByte((u8)((ReadAddr)>>16));  //发送24bit地址    
@@ -112,6 +136,7 @@ void SPI_Flash_Read(u8* pBuffer,u32 ReadAddr,u16 NumByteToRead)
         pBuffer[i]=SPI1_ReadWriteByte(0XFF);   //循环读数  
     }
 	SPI_FLASH_CS=1;                            //取消片选     	      
+	SPI_USART_IO_SET(1);//USART2 工作
 }  
 //SPI在一页(0~65535)内写入少于256个字节的数据
 //在指定地址开始写入最大256字节的数据
@@ -188,6 +213,7 @@ void SPI_Flash_Write(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)
 	while(1) 
 	{	
 		SPI_Flash_Read(SPI_FLASH_BUF,secpos*4096,4096);//读出整个扇区的内容
+		SPI_USART_IO_SET(0);//SPI 工作
 		for(i=0;i<secremain;i++)//校验数据
 		{
 			if(SPI_FLASH_BUF[secoff+i]!=0XFF)break;//需要擦除  	  
@@ -215,6 +241,7 @@ void SPI_Flash_Write(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)
 			else secremain=NumByteToWrite;			//下一个扇区可以写完了
 		}	 
 	};	 
+	SPI_USART_IO_SET(1);//USART2 工作
 #ifdef MEM_ALLOC_TABLE_SIZE			
 	myfree(SPI_FLASH_BUF);		//释放内存	 	 
 #endif

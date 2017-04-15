@@ -2,10 +2,8 @@
 ..\obj\piclib.o: ..\PICTURE\piclib.h
 ..\obj\piclib.o: ..\SYSTEM\sys\sys.h
 ..\obj\piclib.o: ..\SYSTEM\sys\stm32f10x.h
-..\obj\piclib.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cm3.h
+..\obj\piclib.o: ..\SYSTEM\sys\core_cm3.h
 ..\obj\piclib.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
-..\obj\piclib.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cmInstr.h
-..\obj\piclib.o: D:\Software\Keil5\ARM\CMSIS\Include\core_cmFunc.h
 ..\obj\piclib.o: ..\SYSTEM\sys\system_stm32f10x.h
 ..\obj\piclib.o: ..\HARDWARE\LCD\lcd.h
 ..\obj\piclib.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
