@@ -1,22 +1,4 @@
-#include <string.h>
-#include "sys.h"
-#include "delay.h"
-#include "usart.h"
-#include "lcd.h"
-#include "key.h"
-#include "touch.h"	  
-#include "malloc.h" 
-#include "usmart.h"  
-#include "MMC_SD.h"   
-#include "ff.h"  
-#include "exfuns.h"    
-#include "fontupd.h"
-#include "text.h"	
-#include "usart2.h"
-#include "AS608.h"
-#include "timer.h"
 #include "AS608_add.h"
-#include "my_gui.h"
 
 
 
@@ -33,45 +15,7 @@ const  u8* kbd_delFR[15]={"BACK"," : ","del_all","1","2","3","4","5","6","7","8"
 
 
 
-void FR_Management(void)
-{
-	char *str;	
-	u8 ensure;
-	u8 key_num;
-	str=mymalloc(30);
-	sprintf(str,"Baudrate:%d   Addr:%x",usart2_baund,AS608Addr);//显示波特率
-	Show_Str(0,60,240,16,(u8*)str,16,0);
-	delay_ms(100);
-	ensure=PS_ValidTempleteNum(&ValidN);//读库指纹个数
-	if(ensure!=0x00)
-		ShowErrMessage(ensure);//显示确认码错误信息	
-	ensure=PS_ReadSysPara(&AS608Para);  //读AS608模块参数 
-	if(ensure==0x00)
-	{
-		mymemset(str,0,50);
-		sprintf(str,"RemainNum:%d    Level:%d",AS608Para.PS_max-ValidN,AS608Para.PS_level);//显示剩余指纹数量和安全等级
-		Show_Str(0,80,240,16,(u8*)str,16,0);
-	}
-	else
-		ShowErrMessage(ensure);	
-	myfree(str);
-	AS608_load_keyboard(0,170,(u8**)kbd_menu);//加载虚拟键盘
-	while(1)
-	{
-		key_num=AS608_get_keynum(0,170);	
-		if(key_num)
-		{
-			if(key_num==1)Del_FR();		//删指纹
-			if(key_num==3)Add_FR();		//录指纹									
-		}
-		if(PS_Sta)	 //检测PS_Sta状态，如果有手指按下
-		{
-			press_FR();//刷指纹			
-		}				 
-	} 	
 
-	
-}
 
 
 //加载按键界面（尺寸x,y为240*150）
@@ -315,7 +259,6 @@ void press_FR(void)
 			ShowErrMessage(ensure);
 	 delay_ms(1000);//延时后清除显示
 	 LCD_Fill(0,100,lcddev.width,160,WHITE);
-	 TOUCH_DISP_MENU();
 	}
 		
 }
@@ -357,11 +300,63 @@ MENU:
 
 
 
+void FR_Management(void)
+{
+	char *str;	
+	u8 ensure;
+	u8 key_num;
+	u8 t;
+	str=mymalloc(30);
+	sprintf(str,"Baudrate:%d   Addr:%x",usart2_baund,AS608Addr);//显示波特率
+	Show_Str(0,60,240,16,(u8*)str,16,0);
+	delay_ms(100);
+	ensure=PS_ValidTempleteNum(&ValidN);//读库指纹个数
+	if(ensure!=0x00)
+		ShowErrMessage(ensure);//显示确认码错误信息	
+	ensure=PS_ReadSysPara(&AS608Para);  //读AS608模块参数 
+	if(ensure==0x00)
+	{
+		mymemset(str,0,50);
+		sprintf(str,"RemainNum:%d    Level:%d",AS608Para.PS_max-ValidN,AS608Para.PS_level);//显示剩余指纹数量和安全等级
+		Show_Str(0,80,240,16,(u8*)str,16,0);
+	}
+	else
+		ShowErrMessage(ensure);	
+	myfree(str);
+	AS608_load_keyboard(0,170,(u8**)kbd_menu);//加载虚拟键盘
+	while(1)
+	{
+		key_num=AS608_get_keynum(0,170);	
+		if(key_num)
+		{
+			if(key_num==1)		TOUCH_DISP_MENU();		//返回主菜单
+			if(key_num==3)		Add_FR();		//录指纹									
+		}
+
+
+				t=KEY_Scan(0);		//得到键值
+		switch(t)
+		{				 
+			case KEY0_PRES:    //删指纹
+				Del_FR();	
+				break;
+			case KEY1_PRES:		//录指纹		
+				Add_FR();
+				break;
+			default:    ;	
+
+		if(PS_Sta)	 //检测PS_Sta状态，如果有手指按下
+		{
+			press_FR();//刷指纹			
+		}				 
+	} 	
+
+	
+}
 
 
 
-
-
+}
 
 
 

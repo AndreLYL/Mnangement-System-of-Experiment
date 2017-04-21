@@ -28,6 +28,10 @@
 ..\obj\main.o: ..\HARDWARE\AS608\AS608.h
 ..\obj\main.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\main.o: ..\HARDWARE\AS608\AS608_add.h
+..\obj\main.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\main.o: ..\MY_GUI\my_gui.h
+..\obj\main.o: ..\HARDWARE\AS608\AS608_add.h
 ..\obj\main.o: ..\RFID-RC522\rc522_add.h
 ..\obj\main.o: ..\RFID-RC522\rc522.h
+..\obj\main.o: ..\HARDWARE\RTC\RTC.h
+..\obj\main.o: ..\HARDWARE\DS18B20\ds18b20.h

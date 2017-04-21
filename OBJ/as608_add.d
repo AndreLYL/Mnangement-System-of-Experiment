@@ -1,13 +1,15 @@
 ..\obj\as608_add.o: ..\HARDWARE\AS608\as608_add.c
-..\obj\as608_add.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\as608_add.o: ..\SYSTEM\sys\sys.h
+..\obj\as608_add.o: ..\HARDWARE\AS608\AS608_add.h
+..\obj\as608_add.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\as608_add.o: ..\SYSTEM\sys\stm32f10x.h
 ..\obj\as608_add.o: ..\SYSTEM\sys\core_cm3.h
 ..\obj\as608_add.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\as608_add.o: ..\SYSTEM\sys\system_stm32f10x.h
+..\obj\as608_add.o: ..\HARDWARE\AS608\AS608.h
+..\obj\as608_add.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\as608_add.o: ..\SYSTEM\sys\sys.h
 ..\obj\as608_add.o: ..\SYSTEM\delay\delay.h
 ..\obj\as608_add.o: ..\SYSTEM\usart\usart.h
-..\obj\as608_add.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\as608_add.o: ..\HARDWARE\LCD\lcd.h
 ..\obj\as608_add.o: D:\Software\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\as608_add.o: ..\HARDWARE\KEY\key.h
@@ -26,7 +28,6 @@
 ..\obj\as608_add.o: ..\TEXT\fontupd.h
 ..\obj\as608_add.o: ..\TEXT\text.h
 ..\obj\as608_add.o: ..\HARDWARE\USART2\usart2.h
-..\obj\as608_add.o: ..\HARDWARE\AS608\AS608.h
 ..\obj\as608_add.o: ..\HARDWARE\TIMER\timer.h
-..\obj\as608_add.o: ..\HARDWARE\AS608\AS608_add.h
 ..\obj\as608_add.o: ..\MY_GUI\my_gui.h
+..\obj\as608_add.o: ..\HARDWARE\AS608\AS608_add.h

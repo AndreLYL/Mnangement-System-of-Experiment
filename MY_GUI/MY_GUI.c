@@ -714,7 +714,7 @@ void Input_complish(void)
 {
 		u8 x;
 		LCD_Clear(0xC7FF);//清屏
-		for(x=0;x<30;x++)
+		for(x=0;x<30;x++)																										//串口提交成绩信息
 		{
 			printf("%d\t%d%d%d%d\t%d\t%d\t%d\r\n",x+1,Stu[x].studentID[0],Stu[x].studentID[1],Stu[x].studentID[2],Stu[x].studentID[3],
 			Stu[x].dailyscore1,Stu[x].testscore2,Stu[x].score);
