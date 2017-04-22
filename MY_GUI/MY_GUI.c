@@ -1327,3 +1327,139 @@ void TOUCH_Grade_Change(void)  //实验编号键值处理
 }
 
 
+//****************************************************************
+//****************权限管理****************************************
+//****************************************************************
+
+void GUI_Management(void)         //权限管理
+{
+	POINT_COLOR=BLACK; 
+	LCD_DrawLine(0, 39, 239, 39);										//横
+	LCD_DrawLine(0, 39+70+20, 239, 39+70+20);				//横
+	LCD_DrawLine(0, 39+70+70+40, 239, 39+70+70+40); //横
+	LCD_DrawLine(119, 39, 119, 319);								//竖
+	
+	POINT_COLOR=BLUE; 
+	Show_Str(100,10,240,16,"权限管理",16,1);
+	Show_Str(39+5-15,75,240,16,"预约管理",16,0);
+	Show_Str(39+120+5-15,75,240,16,"进入许可",16,0);
+	Show_Str(39+5-15,75+90,240,16,"指纹管理",16,0);
+	Show_Str(39+30+120-40,75+90,240,16,"白名单",16,0);
+	
+	POINT_COLOR=BLACK; 
+	Show_Str(5+10,39+70+70+40+11,240,16,"今天的温度",16,1);
+	Show_Str(5+10+120,39+70+70+40+11,240,16,"日期和时间",16,1);
+	
+}
+
+
+
+void TOUCH_DISP_Management(void)				//主循环程序
+{
+	u8 key;
+	u8 t=0;	
+	short temp; 
+	
+	card_status=0;//状态清零
+
+// 	Touch_Init();	 //初始化 
+	LCD_Clear(0xC7FF);//清屏
+
+	GUI_Management();         //菜单栏显示触摸界面
+	
+	//显示时间
+	POINT_COLOR=BLUE;//设置字体为蓝色
+	LCD_ShowString(60+65+10,130+70+40+20,200,16,16,"    -  -  ");	   
+	LCD_ShowString(60+65+15,162+70+40+20,200,16,16,"  :  :  ");		    
+
+	
+	//显示温度
+	POINT_COLOR=BLUE;//设置字体为蓝色	   
+	LCD_ShowString(10,250+20,200,16,16, "      . C");	 
+
+	
+	while(1)
+	{
+									    
+		
+		if(t!=calendar.sec)
+		{
+			t=calendar.sec;
+			LCD_ShowNum(60+65+10,130+70+40+20,calendar.w_year,4,16);									  
+			LCD_ShowNum(100+65+10,130+70+40+20,calendar.w_month,2,16);									  
+			LCD_ShowNum(124+65+10,130+70+40+20,calendar.w_date,2,16);	 
+			switch(calendar.week)
+			{
+				case 0:
+					LCD_ShowString(60+65+20,146+70+40+20,200,16,16,"Sunday   ");
+					break;
+				case 1:
+					LCD_ShowString(60+65+20,146+70+40+20,200,16,16,"Monday   ");
+					break;
+				case 2:
+					LCD_ShowString(60+65+20,146+70+40+20,200,16,16,"Tuesday  ");
+					break;
+				case 3:
+					LCD_ShowString(60+65+20,146+70+40+20,200,16,16,"Wednesday");
+					break;
+				case 4:
+					LCD_ShowString(60+65+20,146+70+40+20,200,16,16,"Thursday ");
+					break;
+				case 5:
+					LCD_ShowString(60+65+20,146+70+40+20,200,16,16,"Friday   ");
+					break;
+				case 6:
+					LCD_ShowString(60+65+20,146+70+40+20,200,16,16,"Saturday ");
+					break;  			
+			}
+			LCD_ShowNum(60+65+15,162+70+40+20,calendar.hour,2,16);									  
+			LCD_ShowNum(84+65+15,162+70+40+20,calendar.min,2,16);									  
+			LCD_ShowNum(108+65+15,162+70+40+20,calendar.sec,2,16);
+		
+		}
+		
+		
+		//更新温度
+		temp=DS18B20_Get_Temp();
+		if(temp<0)
+		{
+			temp=-temp;
+			LCD_ShowChar(140-110,250+20,'-',16,0);//显示负号	
+		}						 
+		LCD_ShowNum(148-110,250+20,temp/10,2,16);//显示温度值	  
+		LCD_ShowNum(172-110,250+20,temp%10,1,16);//显示温度值
+		
+		
+		
+		
+
+		key=TOUCH_MENU(); //获取触摸键值
+		switch(key)			       //相应键值的处理
+		{
+			case 0:		GUI_Management();   				 //没有触摸按键按下，一直显示操作界面
+								break;
+
+			case 1:		GUI_GradeInput_0(); 	  //成绩录入
+								break;
+
+			case 2:		GUI_Grade_Change(); 		   		//成绩修改
+								break;
+
+			case 3:		LCD_Clear(0xC7FF);
+								FR_Management(); 		 		//成绩提交
+								break;
+
+			case 4:	
+								break;
+
+
+			default:	break;
+		}
+		
+		delay_ms(10);//每过10ms查询一次触摸屏
+
+	 }
+}
+
+
+

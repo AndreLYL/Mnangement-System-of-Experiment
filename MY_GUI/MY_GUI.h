@@ -24,4 +24,8 @@ void TOUCH_DISP_GradeInput_1(void);
 void TOUCH_Grade_Change(void);
 void Show_Change_Information(void);
 void GUI_Grade_Change(void);
+void GUI_Management(void);
+
+
+
 #endif

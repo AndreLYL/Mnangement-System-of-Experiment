@@ -38,7 +38,7 @@ int main(void)
 	KEY_Init();						//按键初始化	  	
 	DS18B20_Init();	      //DS18B20初始化	
 	RTC_Init();
-	// 	RTC_Set(2015,2,12,21,36,00);//设置时间，只需设置一次就要屏蔽此函数
+// 	RTC_Set(2017,4,22,16,32,00);//设置时间，只需设置一次就要屏蔽此函数
 	InitRc522();	
 	InitAlldata();
 	usmart_dev.init(72);	//usmart初始化	
@@ -56,6 +56,12 @@ int main(void)
 		LCD_Fill(60,50,240,66,WHITE);//清除显示
 		delay_ms(200);		
 	}
+	
+////**************函数调试区****************//
+//	
+//	GUI_Management();
+//	while(1);
+	
 
 	/*加载指纹识别实验界面*/
 	LCD_Clear(WHITE);
