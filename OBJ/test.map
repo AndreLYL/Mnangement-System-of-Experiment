@@ -644,9 +644,9 @@ Section Cross References
     as608_add.o(i.FR_Management) refers to as608_add.o(i.AS608_load_keyboard) for AS608_load_keyboard
     as608_add.o(i.FR_Management) refers to as608_add.o(i.AS608_get_keynum) for AS608_get_keynum
     as608_add.o(i.FR_Management) refers to my_gui.o(i.TOUCH_DISP_MENU) for TOUCH_DISP_MENU
-    as608_add.o(i.FR_Management) refers to as608_add.o(i.Add_FR) for Add_FR
     as608_add.o(i.FR_Management) refers to key.o(i.KEY_Scan) for KEY_Scan
     as608_add.o(i.FR_Management) refers to as608_add.o(i.Del_FR) for Del_FR
+    as608_add.o(i.FR_Management) refers to as608_add.o(i.Add_FR) for Add_FR
     as608_add.o(i.FR_Management) refers to as608_add.o(i.press_FR) for press_FR
     as608_add.o(i.FR_Management) refers to as608.o(.data) for AS608Addr
     as608_add.o(i.FR_Management) refers to as608_add.o(.data) for ValidN
