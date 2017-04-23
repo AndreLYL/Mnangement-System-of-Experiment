@@ -58,8 +58,8 @@ int main(void)
 	}
 	
 ////**************º¯Êýµ÷ÊÔÇø****************//
-//	
-//	GUI_Management();
+	
+//	TOUCH_DISP_Procent();
 //	while(1);
 	
 
@@ -94,7 +94,7 @@ int main(void)
 
 	while(1)
 	{
-			TOUCH_DISP_MENU();
+			Main_Management();
 	}
 }
 

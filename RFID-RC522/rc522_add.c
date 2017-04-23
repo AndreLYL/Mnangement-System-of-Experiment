@@ -216,7 +216,7 @@ void ctrlprocess(void)
 	  	cardID[ii]=MLastSelectedSnr[ii];//cardID[]存放着4个2位的16进制数
 			
 // 			UART1_SendByte(MLastSelectedSnr[ii]);//将卡号（ID）通过串口发送到电脑
-			printf("ID=%d\n",MLastSelectedSnr[ii]);
+//			printf("ID=%d\n",MLastSelectedSnr[ii]);
 			
 // 			LCD_ShowNum(10+ii*8,150,MLastSelectedSnr[ii],3,16);//显示ID（3位10进制数）
     }
