@@ -509,6 +509,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\DS18B20\ds18b20.c</FilePath>
             </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\LED\led.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
