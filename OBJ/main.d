@@ -35,3 +35,4 @@
 ..\obj\main.o: ..\RFID-RC522\rc522.h
 ..\obj\main.o: ..\HARDWARE\RTC\RTC.h
 ..\obj\main.o: ..\HARDWARE\DS18B20\ds18b20.h
+..\obj\main.o: ..\HARDWARE\LED\led.h

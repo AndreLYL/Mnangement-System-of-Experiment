@@ -22,6 +22,7 @@
 "..\obj\as608_add.o"
 "..\obj\rtc.o"
 "..\obj\ds18b20.o"
+"..\obj\led.o"
 "..\obj\usmart.o"
 "..\obj\usmart_config.o"
 "..\obj\usmart_str.o"
