@@ -330,7 +330,7 @@ void FR_Management(void)
 		if(key_num)
 		{
 			if(key_num==1)		TOUCH_DISP_MENU();		//返回主菜单
-			if(key_num==3)		TOUCH_DISP_MENU();//录指纹									
+			if(key_num==3)		Add_FR();//录指纹									
 		}
 
 

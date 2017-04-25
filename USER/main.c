@@ -38,7 +38,7 @@ int main(void)
 	KEY_Init();						//按键初始化	  	
 	DS18B20_Init();	      //DS18B20初始化	
 	RTC_Init();
-// 	RTC_Set(2017,4,22,16,32,00);//设置时间，只需设置一次就要屏蔽此函数
+// 	RTC_Set(2017,4,24,14,45,00);//设置时间，只需设置一次就要屏蔽此函数
 	InitRc522();	
 	InitAlldata();
 	usmart_dev.init(72);	//usmart初始化	

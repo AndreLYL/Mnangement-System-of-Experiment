@@ -716,7 +716,7 @@ void GUI_PersonInformation(void)
 	Show_Str(44,292,240,16,"确定",16,1);
 	Show_Str(163,292,240,16,"取消",16,1);
 	Show_CardID(132,128);
-	if(Change_number==0)
+	if(Change_flag==0)
 		Show_Information();
 	else
 	{
@@ -831,10 +831,12 @@ void TOUCH_DISP_GUI_PersonInformation()
 				case 1:	Stu_number++;
 								flag_com=0;
 								Change_number=0;
+								Change_flag=0;
 					      TOUCH_DISP_MENU();
 								break;
 				case 2: flag_com=0;
 								Change_number=0;
+								Change_flag=0;
 								TOUCH_DISP_MENU();
 								break;
 								
@@ -1660,10 +1662,11 @@ void Root_Add(void)
 				Root_ID[Root_number][i] = cardID[i];
 			Root_number++;
 			Show_Str(35,150,240,16,"卡号已经添加到白名单!",16,1);
+			flag_com=0;
 			delay_ms(1000);
 			delay_ms(1000);
 			Main_Management();
-			flag_com=0;
+	
 		}
 	}
 }

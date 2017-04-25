@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\test.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\test.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sun Apr 23 22:51:12 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Mon Apr 24 14:45:53 2017
 <BR><P>
 <H3>Maximum Stack Usage =        424 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2265,7 +2265,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[12f]"></a>RTC_Init</STRONG> (Thumb, 360 bytes, Stack size 16 bytes, rtc.o(i.RTC_Init))
+<P><STRONG><a name="[12f]"></a>RTC_Init</STRONG> (Thumb, 354 bytes, Stack size 16 bytes, rtc.o(i.RTC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = RTC_Init &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -2757,7 +2757,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Main_Management
 </UL>
 
-<P><STRONG><a name="[154]"></a>TOUCH_DISP_GUI_PersonInformation</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, my_gui.o(i.TOUCH_DISP_GUI_PersonInformation))
+<P><STRONG><a name="[154]"></a>TOUCH_DISP_GUI_PersonInformation</STRONG> (Thumb, 88 bytes, Stack size 0 bytes, my_gui.o(i.TOUCH_DISP_GUI_PersonInformation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 296 + Unknown Stack Size
  + In Cycle
 <LI>Call Chain = TOUCH_DISP_GUI_PersonInformation &rArr;  TOUCH_DISP_MENU (Cycle)
@@ -3913,11 +3913,11 @@ Local Symbols
 <P><STRONG><a name="[174]"></a>find_volume</STRONG> (Thumb, 886 bytes, Stack size 80 bytes, ff.o(i.find_volume))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; SPI_Flash_Write &rArr; SPI_Flash_Write_NoCheck &rArr; SPI_Flash_Write_Page &rArr; SPI_Flash_Wait_Busy &rArr; SPI_Flash_ReadSR
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_initialize
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_fs
-<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_initialize
 </UL>
 <BR>[Called By]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
 </UL>

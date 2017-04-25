@@ -58,7 +58,7 @@ u8 RTC_Init(void)
     	while(!(RTC->CRL&(1<<3)));//等待RTC寄存器同步  
     	RTC->CRH|=0X01;  		  //允许秒中断
     	while(!(RTC->CRL&(1<<5)));//等待RTC寄存器操作完成
-		printf("OK\n");
+//		printf("OK\n");
 	}		    				  
 	MY_NVIC_Init(0,0,RTC_IRQn,2);//优先级设置    
 	RTC_Get();//更新时间 
